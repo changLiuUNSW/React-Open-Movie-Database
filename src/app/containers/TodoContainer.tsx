@@ -9,24 +9,19 @@ interface DispatchProps {
   load: () => void;
 }
 
-type PropsState = {
+interface PropsState {
   items: Todo[];
   loading: boolean;
 }
 
-type Props = DispatchProps & PropsState;
-
-class TodoContainer extends React.PureComponent<Props> {
-  render() {
-    const { loading, load, items } = this.props;
-    return (
-      <div className="todo">
-        <button onClick={load}>load item</button>
-        {loading && <p>loading...</p>}
-        {!loading && <TodoList items={items} />}
-      </div>
-    );
-  }
+export const TodoContainer = ({ loading, load, items }: DispatchProps & PropsState) => {
+  return (
+    <div className="todo">
+      <button onClick={load}>load item</button>
+      {loading && <p>loading...</p>}
+      {!loading && <TodoList items={items} />}
+    </div>
+  );
 }
 
 const mapStateToProps = (state: RootState) => {
@@ -36,6 +31,6 @@ const mapStateToProps = (state: RootState) => {
   };
 }
 
-export default connect(mapStateToProps, {
+export default connect<PropsState, DispatchProps>(mapStateToProps, {
   load: todoActions.load
 })(TodoContainer);
