@@ -10,11 +10,9 @@ export enum TodoActionTypes {
 export const todoActions = {
   load: createAction(TodoActionTypes.Load),
   loadFail: createAction(TodoActionTypes.LoadFail),
-  loadSuccess: createAction(
-    TodoActionTypes.LoadSuccess,
-    resolve => {
-      return (todos: Todo[]) => resolve(todos);
-    })
+  loadSuccess: createAction(TodoActionTypes.LoadSuccess, resolve => {
+    return (todos: Todo[]) => resolve(todos);
+  })
 };
 
 export type TodoAction = ActionType<typeof todoActions>;

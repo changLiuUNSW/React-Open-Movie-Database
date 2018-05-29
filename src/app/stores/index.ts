@@ -1,22 +1,25 @@
-import {applyMiddleware, combineReducers, compose, createStore} from 'redux';
-import {combineEpics, createEpicMiddleware} from 'redux-observable';
-import {createSelector} from 'reselect';
-import {TodoAction} from './todo/actions';
-import {epics as todoEipcs} from './todo/epics';
+import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
+import { combineEpics, createEpicMiddleware } from 'redux-observable';
+import { createSelector } from 'reselect';
+import { TodoAction } from './todo/actions';
+import { epics as todoEipcs } from './todo/epics';
 import * as fromTodo from './todo/reducer';
 
 export type RootAction = TodoAction;
 
-export interface RootState { todo: fromTodo.State; }
+export interface RootState {
+  todo: fromTodo.State;
+}
 
-export const rootEpic = combineEpics(...todoEipcs)
+export const rootEpic = combineEpics(...todoEipcs);
 
-    export const rootReducer = combineReducers({todo: fromTodo.reducer});
+export const rootReducer = combineReducers({ todo: fromTodo.reducer });
 
 const composeEnhancers =
-    (process.env.NODE_ENV === 'development' && window &&
-     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
-    compose;
+  (process.env.NODE_ENV === 'development' &&
+    window &&
+    (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 
 function configureStore(initialState?: RootState) {
   // configure middlewares
