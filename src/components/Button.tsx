@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import { color } from '../../styles/constants';
+import { color } from '../styles/constants';
 
-export interface ButtonProps {
+interface ButtonProps {
   primary?: boolean;
 }
 
@@ -26,9 +26,9 @@ export default styled.button`
   &:not(:disabled) {
     cursor: pointer;
   }
-  &:focus{
+  &:focus {
     text-decoration: none;
     outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.5);
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
   }
 `;

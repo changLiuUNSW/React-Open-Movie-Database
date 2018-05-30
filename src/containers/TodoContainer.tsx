@@ -15,7 +15,7 @@ interface PropsState {
   loading: boolean;
 }
 
-export const TodoContainer = ({ loading, load, items }: DispatchProps & PropsState) => {
+const TodoContainer = ({ loading, load, items }: DispatchProps & PropsState) => {
   return (
     <div>
       <Button primary={true} onClick={load}>

@@ -1,6 +1,6 @@
 import { injectGlobal } from 'styled-components';
 import reset from 'styled-reset';
 
-export default () => injectGlobal`
+export default injectGlobal`
   ${reset}
-}`;
+`;

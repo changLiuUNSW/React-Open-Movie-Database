@@ -15,14 +15,10 @@ const Title = styled.h1`
   font-size: 1.25rem;
 `;
 
-interface NavProps {
-  title: string;
-}
-
-const Nav = ({ title }: NavProps) => {
+const Nav = () => {
   return (
     <Container>
-      <Title>{title}</Title>
+      <Title>Open Movie Database</Title>
     </Container>
   );
 };
