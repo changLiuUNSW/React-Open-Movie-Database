@@ -5,17 +5,14 @@ const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  padding: 0 1rem;
-`;
-
-const CopyRight = styled.p`
+  padding: 1rem 1rem;
   font-size: 1rem;
 `;
 
 const Footer = () => {
   return (
     <Container>
-      <CopyRight>© 2016 Chang Liu</CopyRight>
+      © 2016 Chang Liu
     </Container>
   );
 };

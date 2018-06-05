@@ -1,15 +1,11 @@
 import styled from 'styled-components';
 import { color } from '../styles/constants';
 
-interface ButtonProps {
-  primary?: boolean;
-}
-
-export default styled.button`
+export const PrimaryButton = styled.button`
   /* Adapt the colours based on primary prop */
-  background: ${(props: ButtonProps) => (props.primary ? color.primary : 'white')};
-  color: ${(props: ButtonProps) => (props.primary ? '#fff' : 'palevioletred')};
-  border-color: ${(props: ButtonProps) => (props.primary ? color.primary : 'palevioletred')};
+  background: ${color.primary};
+  color: #fff;
+  border-color: ${color.primary};
   display: inline-block;
   font-weight: 400;
   text-align: center;
@@ -30,5 +26,24 @@ export default styled.button`
     text-decoration: none;
     outline: 0;
     box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+  }
+  &:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+  }
+  &:disabled{
+    opacity: .65;
+  }
+`;
+
+export const DangerButton = PrimaryButton.extend`
+  background: ${color.danger};
+  border-color: ${color.danger};
+  &:focus {
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.5);
+  }
+  &:hover {
+    background-color: #bd2130;
+    border-color: #b21f2d;
   }
 `;
