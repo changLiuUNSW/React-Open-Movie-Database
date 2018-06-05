@@ -15,7 +15,7 @@ const SubmitButton = PrimaryButton.extend`
 `;
 
 interface FormValue {
-  firstName: string;
+  title: string;
   year: string;
 }
 
@@ -24,13 +24,19 @@ const mustBeYear = (value: string) =>
   /^(19|20)\d{2}$/.test(value) ? undefined : 'Format is not correct (1900-2099)';
 
 const onSubmit = (values: FormValue) => {
+  // TODO: server call
   // tslint:disable-next-line:no-console
   console.log(values);
 };
 
+const initialValues: FormValue = {
+  title: null,
+  year: null
+};
+
 const Search = () => (
   <Container>
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} initialValues={initialValues}>
       {({ handleSubmit, invalid, pristine, form }) => (
         <form onSubmit={handleSubmit}>
           <FormGroup>
@@ -38,8 +44,13 @@ const Search = () => (
             <Field name="title" validate={required}>
               {({ input, meta }) => (
                 <div>
-                  <InputControl id="title" {...input} required={true} />
-                  {meta.invalid && meta.touched && <ErrorText>{meta.error}</ErrorText>}
+                  <InputControl
+                    id="title"
+                    {...input}
+                    required={true}
+                    error={meta.invalid && meta.dirty}
+                  />
+                  {meta.invalid && meta.dirty && <ErrorText>{meta.error}</ErrorText>}
                 </div>
               )}
             </Field>
@@ -49,8 +60,13 @@ const Search = () => (
             <Field name="year" validate={mustBeYear}>
               {({ input, meta }) => (
                 <div>
-                  <InputControl id="year" {...input} required={true} />
-                  {meta.invalid && meta.touched && <ErrorText>{meta.error}</ErrorText>}
+                  <InputControl
+                    id="year"
+                    {...input}
+                    error={meta.invalid && meta.dirty}
+                    required={true}
+                  />
+                  {meta.invalid && meta.dirty && <ErrorText>{meta.error}</ErrorText>}
                 </div>
               )}
             </Field>
