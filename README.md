@@ -1,5 +1,5 @@
 # React-Open-Movie-Database
-The Open Movie Database based on React + Styled component+ Redux + Redux-Observable + Typescript
+The Open Movie Database based on React + Typescript + Styled component+ Redux + Redux-Observable + React-Router + React-Final-Form
 
 [OMDb API](http://www.omdbapi.com/)
 
