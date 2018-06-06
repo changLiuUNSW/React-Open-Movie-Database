@@ -37,7 +37,7 @@ const SearchForm = ({ onSubmit }: Props) => {
   return (
     <Container>
       <Form onSubmit={onSubmit} initialValues={initialValues}>
-        {({ handleSubmit,invalid, pristine, form, hasSubmitErrors }) => (
+        {({ handleSubmit, invalid, pristine, form, hasSubmitErrors }) => (
           <form onSubmit={handleSubmit} noValidate={true}>
             <FormGroup>
               <label htmlFor="title">Title</label>
@@ -72,8 +72,6 @@ const SearchForm = ({ onSubmit }: Props) => {
             <DangerButton type="button" onClick={form.reset} disabled={pristine}>
               Reset
             </DangerButton>
-            <p>hasSubmitErrors: {JSON.stringify(hasSubmitErrors)}</p>
-            <p>invalid: {JSON.stringify(invalid)}</p>
           </form>
         )}
       </Form>

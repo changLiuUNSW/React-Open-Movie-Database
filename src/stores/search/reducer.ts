@@ -41,3 +41,4 @@ export function reducer(state: State = initialState, action: SearchAction): Stat
 export const getResult = (state: State) => state.result;
 export const getLoading = (state: State) => state.loading;
 export const getError = (state: State) => state.error;
+export const getItems = (state: State) => state.result && state.result.Search;

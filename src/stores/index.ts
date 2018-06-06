@@ -47,3 +47,4 @@ export const getSearchState = (state: RootState) => state.search;
 export const getSearchResult = createSelector(getSearchState, fromSearch.getResult);
 export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoading);
 export const getSearchError = createSelector(getSearchState, fromSearch.getError);
+export const getSearchItems = createSelector(getSearchState, fromSearch.getItems);
