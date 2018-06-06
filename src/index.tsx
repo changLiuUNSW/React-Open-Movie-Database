@@ -7,7 +7,7 @@ import { Redirect, Route, Switch } from 'react-router';
 import { ConnectedRouter } from 'react-router-redux';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
-import TodoContainer from './containers/TodoContainer';
+import SearchContainer from './containers/SearchContainer';
 import registerServiceWorker from './registerServiceWorker';
 import { history, store } from './stores';
 
@@ -18,7 +18,7 @@ ReactDOM.render(
       <React.Fragment>
         <Nav />
         <Switch>
-          <Route exact={true} path="/" component={TodoContainer} />
+          <Route exact={true} path="/" component={SearchContainer} />
           <Route render={() => <Redirect to="/" />} />
         </Switch>
         <Footer />

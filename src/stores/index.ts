@@ -3,22 +3,22 @@ import { RouterAction } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createSelector } from 'reselect';
-import { TodoAction } from './todo/actions';
-import { epics as todoEipcs } from './todo/epics';
-import * as fromTodo from './todo/reducer';
+import { SearchAction } from './search/actions';
+import { epics as searchEipcs } from './search/epics';
+import * as fromSearch from './search/reducer';
 
-export type RootAction = TodoAction | RouterAction;
+export type RootAction = SearchAction | RouterAction;
 
 export interface RootState {
-  todo: fromTodo.State;
+  search: fromSearch.State;
 }
 
 export const history = createHistory();
 
-const rootEpic = combineEpics(...todoEipcs);
+const rootEpic = combineEpics(...searchEipcs);
 
 const rootReducer = combineReducers<RootState>({
-  todo: fromTodo.reducer
+  search: fromSearch.reducer
 });
 
 const composeEnhancers =
@@ -43,6 +43,7 @@ export const store = configureStore();
 /**
  * Data selector
  */
-export const getTodoState = (state: RootState) => state.todo;
-export const getTodos = createSelector(getTodoState, fromTodo.getTodos);
-export const getTodoLoading = createSelector(getTodoState, fromTodo.getLoading);
+export const getSearchState = (state: RootState) => state.search;
+export const getSearchResult = createSelector(getSearchState, fromSearch.getResult);
+export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoading);
+export const getSearchError = createSelector(getSearchState, fromSearch.getError);
