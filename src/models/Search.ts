@@ -12,9 +12,9 @@ export interface Item {
   Poster: string;
 }
 
-export interface SearchResult {
+export interface Result {
   Search: Item[];
-  totalResults: string;
+  totalResults: number;
   Response: string;
   Error: string;
 }

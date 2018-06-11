@@ -3,6 +3,7 @@ import { RouterAction } from 'react-router-redux';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createSelector } from 'reselect';
+import { requests, Requests } from '../services/Api';
 import { SearchAction } from './search/actions';
 import { epics as searchEipcs } from './search/epics';
 import * as fromSearch from './search/reducer';
@@ -11,6 +12,10 @@ export type RootAction = SearchAction | RouterAction;
 
 export interface RootState {
   search: fromSearch.State;
+}
+
+export interface Dependencies {
+  requests: Requests;
 }
 
 export const history = createHistory();
@@ -27,9 +32,13 @@ const composeEnhancers =
     (window as any).__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
   compose;
 
+const dependencies: Dependencies = {
+  requests
+};
+
 function configureStore(initialState?: RootState) {
   // configure middlewares
-  const middlewares = [createEpicMiddleware(rootEpic)];
+  const middlewares = [createEpicMiddleware(rootEpic, { dependencies })];
 
   // compose enhancers
   const enhancer = composeEnhancers(applyMiddleware(...middlewares));
@@ -48,3 +57,5 @@ export const getSearchResult = createSelector(getSearchState, fromSearch.getResu
 export const getSearchLoading = createSelector(getSearchState, fromSearch.getLoading);
 export const getSearchError = createSelector(getSearchState, fromSearch.getError);
 export const getSearchItems = createSelector(getSearchState, fromSearch.getItems);
+export const getSearchTotal = createSelector(getSearchState, fromSearch.getTotal);
+export const getSearchInput = createSelector(getSearchState, fromSearch.getSearchInput);

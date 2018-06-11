@@ -1,10 +1,11 @@
 import { ActionType, createAction } from 'typesafe-actions';
-import { SearchInput, SearchResult } from './../../models/Search';
+import { Result, SearchInput } from './../../models/Search';
 
 export enum SearchActionTypes {
   Search = '[Search] Search',
   Success = '[Search] Success',
-  Fail = '[Search] Fail'
+  Fail = '[Search] Fail',
+  Reset = '[Search] Reset'
 }
 
 export const searchActions = {
@@ -15,8 +16,9 @@ export const searchActions = {
     return (searchInput: SearchInput) => resolve(searchInput);
   }),
   success: createAction(SearchActionTypes.Success, resolve => {
-    return (searchResult: SearchResult) => resolve(searchResult);
-  })
+    return (result: Result) => resolve(result);
+  }),
+  reset: createAction(SearchActionTypes.Reset)
 };
 
 export type SearchAction = ActionType<typeof searchActions>;
