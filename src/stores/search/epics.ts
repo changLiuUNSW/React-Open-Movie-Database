@@ -3,9 +3,13 @@ import { of } from 'rxjs';
 import { catchError, filter, map, switchMap } from 'rxjs/operators';
 import { isActionOf } from 'typesafe-actions';
 import { Dependencies, RootAction, RootState } from '..';
-import { searchActions } from './actions';
+import { SearchAction, searchActions } from './actions';
 
-const search: Epic<RootAction, RootState, Dependencies> = (action$, store, { requests }) =>
+const search: Epic<RootAction, SearchAction, RootState, Dependencies> = (
+  action$,
+  store$,
+  { requests }
+) =>
   action$.pipe(
     filter(isActionOf(searchActions.search)),
     switchMap(action => {

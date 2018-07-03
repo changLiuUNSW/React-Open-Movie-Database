@@ -3,8 +3,8 @@ import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './styles/globals';
 
+import { ConnectedRouter } from 'connected-react-router';
 import { Redirect, Route, Switch } from 'react-router';
-import { ConnectedRouter } from 'react-router-redux';
 import Footer from './components/Footer';
 import Nav from './components/Nav';
 import SearchContainer from './containers/SearchContainer';
