@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.nav`
@@ -11,14 +12,17 @@ const Container = styled.nav`
   padding: 0.5rem 1rem;
 `;
 
-const Title = styled.h1`
+const Title = styled(Link)`
+  color: rgba(255, 255, 255, 0.87);
+  outline: none;
+  text-decoration: none;
   font-size: 1.25rem;
 `;
 
 const Nav = () => {
   return (
     <Container>
-      <Title>Open Movie Database</Title>
+      <Title to="/">Open Movie Database</Title>
     </Container>
   );
 };

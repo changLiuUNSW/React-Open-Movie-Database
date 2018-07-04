@@ -10,7 +10,11 @@ export interface State {
 }
 
 const initialState: State = {
-  searchInput: null,
+  searchInput: {
+    page: 1,
+    title: null,
+    year: null
+  },
   error: null,
   loading: false,
   result: null

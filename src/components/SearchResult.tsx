@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as InfiniteScroll from 'react-infinite-scroller';
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { Item, SearchInput } from '../models/Search';
 import { requests } from '../services/Api';
@@ -67,7 +68,9 @@ class SearchResult extends React.Component<SearchResultProps, State> {
           <ItemWrapper>
             {items.map(item => (
               <Item key={item.imdbID}>
-                <Poster src={item.Poster} alt={item.Title} />
+                <Link to={`/detail/${item.imdbID}`}>
+                  <Poster src={item.Poster} alt={item.Title} />
+                </Link>
               </Item>
             ))}
           </ItemWrapper>

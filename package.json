@@ -9,7 +9,6 @@
     "eject": "react-scripts-ts eject"
   },
   "dependencies": {
-    "connected-react-router": "^4.3.0",
     "final-form": "^4.7.3",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -17,6 +16,7 @@
     "react-infinite-scroller": "^1.1.4",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts-ts": "2.16.0",
     "redux": "4.0.0",
     "redux-observable": "1.0.0",
@@ -27,6 +27,7 @@
     "typesafe-actions": "^2.0.4"
   },
   "devDependencies": {
+    "@types/react-router-dom": "^4.2.7",
     "@types/enzyme": "^3.1.10",
     "@types/enzyme-adapter-react-16": "^1.0.2",
     "@types/jest": "^22.2.3",

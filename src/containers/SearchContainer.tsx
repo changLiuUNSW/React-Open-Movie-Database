@@ -22,16 +22,17 @@ interface PropsState {
   loading: boolean;
   total: number;
   search: (input: SearchInput) => void;
+  reset: () => void;
 }
 
 const Container = styled.div`
   padding: 1rem 1rem;
 `;
 
-const SearchContainer = ({ search, items, inputs, total }: PropsState) => {
+const SearchContainer = ({ search, items, inputs, total, reset }: PropsState) => {
   return (
     <Container>
-      <SearchForm onSubmit={search} />
+      <SearchForm onSubmit={search} inputs={inputs} onReset={reset} />
       {items && <SearchResult items={items} inputs={inputs} total={total} />}
     </Container>
   );
@@ -51,6 +52,9 @@ const mapDispatchToProps = (dispatch: Dispatch<RootAction>) => {
   return {
     search: (input: SearchInput) => {
       dispatch(searchActions.search(input));
+    },
+    reset: () => {
+      dispatch(searchActions.reset());
     }
   };
 };

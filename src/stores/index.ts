@@ -1,5 +1,3 @@
-import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { createBrowserHistory } from 'history';
 import { applyMiddleware, combineReducers, compose, createStore } from 'redux';
 import { combineEpics, createEpicMiddleware } from 'redux-observable';
 import { createSelector } from 'reselect';
@@ -18,7 +16,6 @@ export interface Dependencies {
   requests: Requests;
 }
 
-export const history = createBrowserHistory();
 
 const rootEpic = combineEpics(...searchEipcs);
 
@@ -42,11 +39,11 @@ function configureStore(initialState?: RootState) {
   });
 
   // configure middlewares
-  const middlewares = [epicMiddleware, routerMiddleware(history)];
+  const middlewares = [epicMiddleware];
   // compose enhancers
   const enhancer = composeEnhancers(applyMiddleware(...middlewares));
 
-  const storeInsrance = createStore(connectRouter(history)(rootReducer), initialState!, enhancer);
+  const storeInsrance = createStore(rootReducer, initialState!, enhancer);
 
   epicMiddleware.run(rootEpic);
   return storeInsrance;

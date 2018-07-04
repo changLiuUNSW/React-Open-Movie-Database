@@ -18,20 +18,16 @@ const mustBeYear = (value: string) => {
   return undefined;
 };
 
-const initialValues: SearchInput = {
-  page: 1,
-  title: null,
-  year: null
-};
-
 interface Props {
+  onReset: () => void;
   onSubmit: (value: SearchInput) => void;
+  inputs: SearchInput;
 }
 
-const SearchForm = ({ onSubmit }: Props) => {
+const SearchForm = ({ onSubmit, inputs, onReset }: Props) => {
   return (
-    <Form onSubmit={onSubmit} initialValues={initialValues}>
-      {({ handleSubmit, invalid, pristine, form }) => (
+    <Form onSubmit={onSubmit} initialValues={inputs}>
+      {({ handleSubmit, invalid, form }) => (
         <form onSubmit={handleSubmit} noValidate={true}>
           <FormGroup>
             <label htmlFor="title">Title</label>
@@ -63,7 +59,7 @@ const SearchForm = ({ onSubmit }: Props) => {
           <SubmitButton type="submit" disabled={invalid}>
             Search
           </SubmitButton>
-          <DangerButton type="button" onClick={form.reset} disabled={pristine}>
+          <DangerButton type="button" onClick={onReset}>
             Reset
           </DangerButton>
         </form>
