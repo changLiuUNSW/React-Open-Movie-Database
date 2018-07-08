@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/changLiuUNSW/React-Open-Movie-Database.svg?branch=master)](https://travis-ci.org/changLiuUNSW/React-Open-Movie-Database)
+
 # React-Open-Movie-Database
 The Open Movie Database based on React + Typescript + Styled component+ Redux + Redux-Observable + React-Router + React-Final-Form
 

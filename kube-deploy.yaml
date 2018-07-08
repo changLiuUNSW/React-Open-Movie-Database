@@ -1,0 +1,37 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: react-open-movie-database
+  name: react-open-movie-database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: react-open-movie-database
+  template:
+    metadata:
+      labels:
+        app: react-open-movie-database
+    spec:
+      containers:
+      - image: changliuunsw/react-open-movie-database:latest
+        name: react-open-movie-database
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: react-open-movie-database
+  name: react-open-movie-database
+spec:
+  ports:
+  - name: react-open-movie-database
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: react-open-movie-database
+  type: LoadBalancer
