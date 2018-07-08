@@ -53,12 +53,10 @@ export default class Detail extends React.Component<Props, State> {
   }
 
   componentDidUpdate(prevProps: Props, prevState: State) {
-    if (this.state.error) {
+    if (this.state.error || this.state.movie) {
       return;
     }
-    if (this.state.movie === null) {
-      this.loadMovieDetail();
-    }
+    this.loadMovieDetail();
   }
 
   public render() {
@@ -75,7 +73,9 @@ export default class Detail extends React.Component<Props, State> {
             <p>Rate: {movie.Rated}</p>
             <p>Award: {movie.Awards}</p>
             <p>Director: {movie.Director}</p>
-            <p>Website: <a href={movie.Website}>{movie.Website}</a></p>
+            <p>
+              Website: <a href={movie.Website}>{movie.Website}</a>
+            </p>
             <p>Plot: {movie.Plot}</p>
           </div>
         )}
@@ -84,14 +84,21 @@ export default class Detail extends React.Component<Props, State> {
   }
 
   private loadMovieDetail = () => {
-    requests.detail(this.state.prevId).subscribe(data => {
-      if (data.Response === 'False') {
+    requests.detail(this.state.prevId).subscribe(
+      data => {
+        if (data.Response === 'False') {
+          this.setState({
+            error: data.Error
+          });
+        } else {
+          this.setState({ movie: data });
+        }
+      },
+      () => {
         this.setState({
-          error: data.Error
+          error: 'Server Error'
         });
-      } else {
-        this.setState({ movie: data });
       }
-    });
+    );
   };
 }

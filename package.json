@@ -6,10 +6,15 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "react-scripts-ts test --env=jsdom",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "server": "nodemon server.js",
+    "prod": "npm run build && npm run server"
   },
   "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
     "final-form": "^4.7.3",
+    "nodemon": "^1.17.5",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-final-form": "^3.5.1",
