@@ -7,9 +7,10 @@ import { requests } from '../services/Api';
 
 const Container = styled.div`
   padding-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+`;
+
+const Title = styled.h1`
+  text-align: center;
 `;
 
 const ItemWrapper = styled.ul`
@@ -64,7 +65,7 @@ class SearchResult extends React.Component<SearchResultProps, State> {
         hasMore={this.state.hasMore}
       >
         <Container>
-          <div>{`${this.props.total} titles`}</div>
+          <Title>{`${this.props.total} titles`}</Title>
           <ItemWrapper>
             {items.map(item => (
               <Item key={item.imdbID}>

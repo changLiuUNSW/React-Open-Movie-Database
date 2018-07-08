@@ -5,6 +5,8 @@ The Open Movie Database based on React + Typescript + Styled component+ Redux + 
 
 [OMDb API](http://www.omdbapi.com/)
 
+[DEMO](http://40.121.22.64:3000/)
+
 ## How to start
 
 **Note** this project is based on node v8.1.4 and npm 5.0.3.
