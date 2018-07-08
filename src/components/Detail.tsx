@@ -3,6 +3,7 @@ import { match as RouterMatch } from 'react-router';
 import styled from 'styled-components';
 import { Movie } from '../models/Search';
 import { requests } from '../services/Api';
+import { Loader } from './Loader';
 
 interface Props {
   match: RouterMatch<any>;
@@ -63,6 +64,7 @@ export default class Detail extends React.Component<Props, State> {
     const { error, movie } = this.state;
     return (
       <Container>
+        {!error && !movie && <Loader />}
         {error && <p>{error}</p>}
         {movie && (
           <div>
