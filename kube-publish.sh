@@ -1,6 +1,6 @@
 #!/bin/sh
 
-docker build -t changliuunsw/react-open-movie-database .
+docker build -t changliuunsw/react-open-movie-database:${TRAVIS_TAG} .
 docker login -u "$DOCKER_USERNAME" -p "$DOCKER_PASSWORD";
 docker push changliuunsw/react-open-movie-database
 
@@ -11,5 +11,5 @@ sudo mv ./kubectl /usr/local/bin/kubectl
 mkdir ${HOME}/.kube
 cp kubeConfig ${HOME}/.kube/config
 
-kubectl delete deployment react-open-movie-database
+cat kube-deploy.yaml | sed "s/{version}/${TRAVIS_TAG}/g" > kube-deploy.yaml
 kubectl apply -f kube-deploy.yaml

@@ -15,7 +15,7 @@ spec:
         app: react-open-movie-database
     spec:
       containers:
-      - image: changliuunsw/react-open-movie-database:latest
+      - image: changliuunsw/react-open-movie-database:{version}
         name: react-open-movie-database
         ports:
         - containerPort: 3000
