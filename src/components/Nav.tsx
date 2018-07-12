@@ -22,7 +22,7 @@ const Title = styled(Link)`
 const Nav = () => {
   return (
     <Container>
-      <Title to="/">React Open Movie Database</Title>
+      <Title to="/">React Open Movie Database - Segment</Title>
     </Container>
   );
 };
